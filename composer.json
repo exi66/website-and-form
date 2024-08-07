@@ -1,0 +1,6 @@
+{
+    "require": {
+        "rakit/validation": "^1.4",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

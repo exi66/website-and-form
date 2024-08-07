@@ -1,0 +1,5 @@
+[phases.setup]
+nixPkgs = ['...', 'nodejs', 'git']
+
+[phases.build]
+cmds = ['git submodule update --init', 'cd ./.vue && npm i && npm run build && cd ..', 'mv ./.vue/dist/* ./', 'composer i']
