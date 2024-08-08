@@ -5,7 +5,7 @@ nixPkgs = ['...', 'nodejs', 'git', 'cron', 'curl']
 cmds = [
   'git submodule update --init',
   'cd ./.vue && npm i && npm run build && rm -rf node_modules && cd ..',
-  'mv ./.vue/dist/* ./',
+  'mv ./.vue/dist/* ./'
 ]
 
 [phases.cron]
@@ -13,7 +13,7 @@ cmds = [
   'chmod +x /app/.cloudflare/ip-whitelist-sync.sh',
   'chmod +x /app/.cloudflare/ip-whitelist-sync-init.sh && /app/.cloudflare/ip-whitelist-sync-init.sh',
   'echo "30 2 * * * /app/.cloudflare/ip-whitelist-sync.sh >/dev/null 2>&1" >> /app/.cloudflare/cloudflare-job',
-  'crontab /app/.cloudflare/cloudflare-job',
+  'crontab /app/.cloudflare/cloudflare-job'
 ]
 dependsOn = ['build']
 
