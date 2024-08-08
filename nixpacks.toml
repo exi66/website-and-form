@@ -1,7 +1,6 @@
 [phases.setup]
 nixPkgs = [
   '...',
-  'nodejs',
   'git',
 # 'cron',
 # 'curl'
