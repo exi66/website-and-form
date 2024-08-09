@@ -2,8 +2,8 @@
 nixPkgs = [
   '...',
   'git',
-# 'cron',
-# 'curl'
+  'cron',
+  'curl'
 ]
 
 [phases.build]
@@ -13,14 +13,14 @@ cmds = [
   'mv ./.vue/dist/* ./'
 ]
 
-# [phases.cron]
-# cmds = [
-#   'chmod +x /app/.cloudflare/ip-whitelist-sync.sh',
-#   'chmod +x /app/.cloudflare/ip-whitelist-sync-init.sh && /app/.cloudflare/ip-whitelist-sync-init.sh',
-#   'echo "30 2 * * * /app/.cloudflare/ip-whitelist-sync.sh >/dev/null 2>&1" >> /app/.cloudflare/cloudflare-job',
-#   'crontab /app/.cloudflare/cloudflare-job'
-# ]
-# dependsOn = ['build']
+[phases.cron]
+cmds = [
+  'chmod +x /app/.cloudflare/ip-whitelist-sync.sh',
+  'chmod +x /app/.cloudflare/ip-whitelist-sync-init.sh && /app/.cloudflare/ip-whitelist-sync-init.sh',
+  'echo "30 2 * * * /app/.cloudflare/ip-whitelist-sync.sh >/dev/null 2>&1" >> /app/.cloudflare/cloudflare-job',
+  'crontab /app/.cloudflare/cloudflare-job'
+]
+dependsOn = ['build']
 
-# [start]
-# cmd = 'cron && node /assets/scripts/prestart.mjs /app/nginx.template.conf /nginx.conf && (php-fpm -y /assets/php-fpm.conf & nginx -c /nginx.conf)'
+[start]
+cmd = 'cron && node /assets/scripts/prestart.mjs /app/nginx.template.conf /nginx.conf && (php-fpm -y /assets/php-fpm.conf & nginx -c /nginx.conf)'
